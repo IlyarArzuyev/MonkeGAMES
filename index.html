@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Мини-игры</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", sans-serif;
+      background: url("background.jpg") center/cover no-repeat fixed;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      text-align: center;
+      backdrop-filter: blur(2px);
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      width: 90%;
+      max-width: 400px;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .game {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 18px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s, background 0.2s;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(6px);
+    }
+
+    .game:hover, .game:active {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+
+    .game img {
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      margin-bottom: 10px;
+      border-radius: 14px;
+    }
+
+    .game span {
+      font-size: 1rem;
+      font-weight: 600;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.6s ease;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 420px) {
+      h1 { font-size: 1.6rem; }
+      .game img { width: 60px; height: 60px; }
+      .game span { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Мини-игры</h1>
+
+  <div class="games">
+    <div class="game" onclick="location.href='tic-tac-toe.html'">
+      <img src="icons/tic-tac-toe.png" alt="Крестики-нолики">
+      <span>Крестики-нолики</span>
+    </div>
+
+    <div class="game" onclick="location.href='flappy.html'">
+      <img src="icons/flappy.png" alt="Flappy Bird">
+      <span>Flappy Bird</span>
+    </div>
+
+    <div class="game" onclick="location.href='memory.html'">
+      <img src="icons/memory.png" alt="Память">
+      <span>Память</span>
+    </div>
+
+    <div class="game" onclick="location.href='guess.html'">
+      <img src="icons/guess.png" alt="Угадай число">
+      <span>Угадай число</span>
+    </div>
+  </div>
+
+  <footer>© 2025 Мини-игры</footer>
+</body>
+</html>

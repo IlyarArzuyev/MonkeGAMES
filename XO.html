@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<title>Крестики — Нолики (мобильная версия)</title>
+<style>
+:root{
+--bg:#f7f8fb;
+--card:#ffffff;
+--accent:#6b46c1;
+--muted:#6b7280;
+--win:#10b981;
+--lose:#ef4444;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);-webkit-tap-highlight-color:transparent}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+.card{width:100%;max-width:520px;background:var(--card);border-radius:14px;box-shadow:0 8px 30px rgba(16,24,40,0.08);padding:18px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+h1{font-size:18px;margin:0;color:#111827}
+.controls{display:flex;gap:8px;align-items:center}
+button{background:var(--accent);color:#fff;border:0;padding:8px 12px;border-radius:10px;font-weight:600;box-shadow:0 4px 12px rgba(99,102,241,0.12)}
+button.ghost{background:transparent;color:var(--accent);box-shadow:none;border:1px solid rgba(107,70,193,0.12)}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.cell{aspect-ratio:1/1;border-radius:12px;background:linear-gradient(180deg,#fbfdff,#f7f9ff);display:flex;align-items:center;justify-content:center;font-size:46px;touch-action:manipulation;user-select:none}
+.cell.disabled{opacity:0.6}
+.status{margin-top:12px;font-size:14px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+.score{display:flex;gap:12px;align-items:center}
+.score div{background:#fafafa;border-radius:10px;padding:8px 10px;font-weight:600}
+.win{color:var(--win)}
+.lose{color:var(--lose)}
+@media (max-width:420px){
+.cell{font-size:38px;border-radius:10px}
+h1{font-size:16px}
+button{padding:8px 10px}
+}
+.line{position:relative}
+.cell.win{background:linear-gradient(90deg,rgba(16,185,129,0.08),rgba(99,102,241,0.04))}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+<header>
+<h1>Крестики — Нолики</h1>
+<div class="controls">
+<button id="undoBtn" class="ghost">Отменить ход</button>
+<button id="restartBtn">Новая игра</button>
+</div>
+</header>
+
+
+<div class="score" style="justify-content:space-between">
+<div>Ход: <strong id="current">X</strong></div>
+<div style="display:flex;gap:8px">
+<div>✖️ <span id="scoreX">0</span></div>
+<div>⭕ <span id="scoreO">0</span></div>
+</div>
+</div>
+
+
+<div id="board" class="board" aria-label="Поле крестики-нолики">
+<!-- 9 ячеек создаются скриптом -->
+</div>
+
+
+<div class="status">
+<div id="message">Нажмите на любую клетку чтобы начать</div>
+<div style="display:flex;gap:8px">
+<button id="aiBtn" class="ghost">Игра с ИИ: выкл</button>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+// Простая мобильная крестики-нолики с поддержкой игры против простого ИИ (случайный ход) и отмены хода.
+const boardEl = document.getElementById('board');
+const currentEl = document.getElementById('current');
+const messageEl = document.getElementById('message');
+const scoreX = document.getElementById('scoreX');
+const scoreO = document.getElementById('scoreO');
+const restartBtn = document.getElementById('restartBtn');
+const aiBtn = document.getElementById('aiBtn');
+const undoBtn = document.getElementById('undoBtn');
+
+
+let board = Array(9).fill('');
+let current = 'X';
+let active = true;
+</html>
